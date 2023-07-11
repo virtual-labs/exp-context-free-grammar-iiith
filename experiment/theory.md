@@ -67,7 +67,7 @@ Ambiguous CFGs refer to context-free grammars where there exist more than one de
 Construct a derivation tree for the string `aabbabba` for the CFG given by - 
 
 ```jsx
-		S → aB | bA  
+    S → aB | bA  
     A → a | aS | bAA  
     B → b | bS | aBB
 ```
@@ -83,12 +83,13 @@ $aabbabba$
 Show the derivation tree for string "`aabbbb`" with the following grammar - 
 
 ```jsx
-		S → AB | ε  
+    S → AB | ε  
     A → aB  
     B → Sb
 ```
 
 The derivation tree: 
+![$aabbbb$](images/Untitled%202.png)
 
 ![$aabbbb$](images/Untitled%202.png)
 
