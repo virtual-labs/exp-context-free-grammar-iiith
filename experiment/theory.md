@@ -54,9 +54,9 @@ Construct a parse tree for `p*q+r`, given the following production rules-
 
 The construction process is as follows:
 
-![*p*q+r*](images/Untitled.png)
+![p*q+r](images/Untitled.png)
 
-*p*q+r*
+p*q+r
 
 ### **Ambiguity in CFGs**
 
