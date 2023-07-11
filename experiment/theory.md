@@ -90,9 +90,9 @@ Show the derivation tree for string "`aabbbb`" with the following grammar -
 
 The derivation tree: 
 
-![$aabbabba$](images/Untitled%202.png)
+![$aabbbb$](images/Untitled%202.png)
 
-$aabbabba$ 
+$aabbbb$ 
 
 # Applications
 
