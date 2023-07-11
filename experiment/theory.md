@@ -47,7 +47,7 @@ For a given derivation tree, Imagine you are traversing a tree using depth-first
 Construct a parse tree for `p*q+r`, given the following production rules-
 
 ```jsx
-		E = E + E  
+    E = E + E  
     E = E * E  
     E = p | q | r
 ```
@@ -74,9 +74,9 @@ Construct a derivation tree for the string `aabbabba` for the CFG given by -
 
 The derivation tree: 
 
-![$aabbabba$](images/Untitled%201.png)
+![aabbabba](images/Untitled%201.png)
 
-$aabbabba$
+aabbabba
 
 ### Experiment 2
 
@@ -89,11 +89,10 @@ Show the derivation tree for string "`aabbbb`" with the following grammar -
 ```
 
 The derivation tree: 
-![$aabbbb$](images/Untitled%202.png)
 
-![$aabbbb$](images/Untitled%202.png)
+![aabbbb](images/Untitled%202.png)
 
-$aabbbb$ 
+aabbbb
 
 # Applications
 
