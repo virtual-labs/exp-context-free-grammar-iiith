@@ -2,37 +2,71 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "Which of the following best describes a context-free grammar?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "A CFG is defined by a set of production rules, a set of terminals, a set of non-terminals and a start symbol",
+        "b": "A CFG is a type of automaton that accepts strings over an alphabet",
+        "c": "A CFG is a language that cannot be accepted by a deterministic finite automaton",
+        "d": "A CFG is a string over an alphabet that is defined by a set of production rules"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "a",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "What does the derivation in a context-free grammar (CFG) represent?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "The process of generating terminal strings from the start symbol",
+        "b": "The transition between states in an automaton",
+        "c": "The determination of whether a grammar is regular or context-free",
+        "d": "The encoding of the grammar's rules into binary"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
-      "correctAnswer": "c",
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Which of the following is a valid production rule for a context-free grammar?",
+      "answers": {
+        "a": "A → aB | b",
+        "b": "aB → Ab",
+        "c": "Aa → AB",
+        "d": "b → B"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "a",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Given a grammar with the production rules: S → aA and A → b, which of the following represents the correct sequence of derivations to produce the string 'ab'?",
+      "answers": {
+        "a": "S ⇒ aA ⇒ ab",
+        "b": "S ⇒ A ⇒ ab",
+        "c": "A ⇒ S ⇒ ab",
+        "d": "A ⇒ aS ⇒ ab"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "a",
       "difficulty": "beginner"
     }
   ]
