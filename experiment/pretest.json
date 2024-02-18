@@ -2,37 +2,71 @@
   "version": 2.0,
   "questions": [
     {
-      "question": "This is a Sample Question 1?",
+      "question": "What differentiates a pushdown automaton (PDA) from a finite automaton?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "The use of an alphabet",
+        "b": "The number of states",
+        "c": "The use of a stack",
+        "d": "The transition function"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
-      "correctAnswer": "a",
+      "correctAnswer": "c",
       "difficulty": "beginner"
     },
     {
-      "question": "This is a Sample Question 2?",
+      "question": "If a PDA ends with an empty stack, what does that indicate?",
       "answers": {
-        "a": "answer1",
-        "b": "answer2",
-        "c": "answer3",
-        "d": "answer4"
+        "a": "The input string was not recognized",
+        "b": "The PDA malfunctioned",
+        "c": "The input string was recognized (in empty stack acceptance)",
+        "d": "The stack had a fixed size"
       },
       "explanations": {
-        "a": "Explanation 1  <a href='www.google.com'>here</a>",
-        "b": "Explanation 2",
-        "c": "Explanation 2",
-        "d": "Explanation 2"
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
       },
       "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What primarily differentiates a context-free grammar from a regular grammar?",
+      "answers": {
+        "a": "The alphabet used",
+        "b": "The complexity of strings generated",
+        "c": "The type of rules that can be included",
+        "d": "The start symbol"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "Why are pushdown automata suitable for recognizing context-free languages?",
+      "answers": {
+        "a": "Because they use regular expressions",
+        "b": "Because they can store past states in the stack",
+        "c": "Because of their infinite memory capability",
+        "d": "Because they can keep track of nested structures using the stack"
+      },
+      "explanations": {
+        "a": "",
+        "b": "",
+        "c": "",
+        "d": ""
+      },
+      "correctAnswer": "d",
       "difficulty": "beginner"
     }
   ]
