@@ -36,64 +36,6 @@ Parse trees or derivation trees are graphical representations for the derivation
 3. The leaf node is always the terminal node.
 4. The interior nodes are always the non-terminal nodes
 
-# Experiments
-
-### Reading Parse Trees
-
-For a given derivation tree, Imagine you are traversing a tree using depth-first search (in the order: `dfs(leftmost_child),… dfs(rightmost_child)`. Then, keep track of all the terminal nodes you come across in this process. 
-
-### Example
-
-Construct a parse tree for `p*q+r`, given the following production rules-
-
-```jsx
-    E = E + E  
-    E = E * E  
-    E = p | q | r
-```
-
-The construction process is as follows:
-
-![p*q+r](images/Untitled.png)
-
-p*q+r
-
-### **Ambiguity in CFGs**
-
-Ambiguous CFGs refer to context-free grammars where there exist more than one derivation tree for a given input string. This implies that there can exist multiple Left Most Derivation Trees or Right Most Derivation Trees for a single input. Ambiguity in grammars can be removed by re-writing the grammar without ambiguity, as there is no method to automatically detect and remove it. 
-
-### Experiment 1
-
-Construct a derivation tree for the string `aabbabba` for the CFG given by - 
-
-```jsx
-    S → aB | bA  
-    A → a | aS | bAA  
-    B → b | bS | aBB
-```
-
-The derivation tree: 
-
-![aabbabba](images/Untitled%201.png)
-
-aabbabba
-
-### Experiment 2
-
-Show the derivation tree for string "`aabbbb`" with the following grammar - 
-
-```jsx
-    S → AB | ε  
-    A → aB  
-    B → Sb
-```
-
-The derivation tree: 
-
-![aabbbb](images/Untitled%202.png)
-
-aabbbb
-
 # Applications
 
 1. Syntactic Parsing: Derivation trees are used in syntactic parsing to analyze the grammatical structure of sentences and determine syntactic relationships between words and phrases.
@@ -139,10 +81,3 @@ A: The construction of derivation trees is deterministic, as it follows a specif
 | Captures all the grammatical derivations and includes every production rule and intermediate step. | Removes redundant information, such as parentheses and operator precedence. |
 | Contains all the details, such as parentheses and operator precedence. | Focuses on the high-level structure and semantic relationships between the program's components. |
 | Typically larger and more detailed compared to ASTs. | Typically smaller and more concise compared to parse trees. |
-
-# References
-
-1. Introduction To The Theory Of Computation, Micheal Sipser
-2. [https://www.javatpoint.com/automata-derivation-tree#:~:text=Derivation tree is a graphical,also called a parse tree](https://www.javatpoint.com/automata-derivation-tree#:~:text=Derivation%20tree%20is%20a%20graphical,also%20called%20a%20parse%20tree)
-3. [https://www.geeksforgeeks.org/ambiguous-grammar/](https://www.geeksforgeeks.org/ambiguous-grammar/)
-4. [https://www.javatpoint.com/automata-ambiguity-in-grammar](https://www.javatpoint.com/automata-ambiguity-in-grammar)
