@@ -1,1 +1,215 @@
-/* You CSS goes in here */
+/* Global reset and base styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    font-family: Arial, sans-serif;
+}
+
+/* Responsive layout improvements */
+.body-padding {
+    padding: 100px;
+}
+
+@media (max-width: 641px) {
+    .body-padding {
+        padding-top: 100px;
+        padding-left: 0;
+        padding-right: 0;
+    }
+}
+
+/* Layout container fix */
+.columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1.5rem;
+}
+
+/* CFG control section */
+#control-container,
+#trace-container {
+    flex: 1 1 300px;
+    max-width: 350px;
+    min-width: 260px;
+    align-self: flex-start;
+}
+
+/* Center/Working section */
+#working-board {
+    flex: 2 1 600px;
+    min-width: 300px;
+    max-width: 100%;
+    max-height: 100%;
+    overflow-y: auto;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+#working-area {
+    width: 100%;
+}
+
+/* Derivation tree area */
+#derivation_tree {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Derivation tree specific styles */
+.tree-node circle {
+    fill: #29e;
+    stroke: #fff;
+    stroke-width: 2px;
+}
+
+.tree-node text {
+    font-size: 14px;
+    font-family: sans-serif;
+}
+
+.tree-link {
+    fill: none;
+    stroke: #ccc;
+    stroke-width: 2px;
+}
+
+/* Production rules styling */
+.production-rule {
+    font-family: monospace;
+    font-size: 1.2rem;
+    margin: 5px 0;
+}
+
+/* Derivation steps container */
+ul#derivation_steps_list {
+    list-style-type: none;
+    padding-left: 10px;
+    max-height: 100%;
+    overflow-y: auto;
+}
+
+ul#derivation_steps_list li {
+    margin-bottom: 8px;
+    padding: 5px;
+    border-left: 3px solid #288ec8;
+    padding-left: 10px;
+}
+
+ul#derivation_steps_list li.current-step {
+    background-color: #f0f8ff;
+    border-left: 3px solid #ff6b6b;
+}
+
+/* Input string styling */
+.input-string {
+    font-family: monospace;
+    font-size: 1.5rem;
+    letter-spacing: 2px;
+}
+
+.current-symbol {
+    color: #ff6b6b;
+    font-weight: bold;
+    text-decoration: underline;
+}
+
+/* Buttons */
+.v-button {
+    margin-bottom: 5px;
+    width: 75%;
+}
+
+.v-button:hover {
+    background-color: #1a6fa3;
+}
+
+/* Table styles */
+table,
+th,
+td {
+    border: 1px solid black;
+}
+
+th,
+td {
+    padding-left: 2px;
+    padding-right: 2px;
+}
+
+/* SVG interaction */
+text {
+    pointer-events: none;
+}
+
+/* Z-index layers for jsPlumb (if used) */
+.window {
+    z-index: 20;
+}
+
+.jtk-connector {
+    z-index: 4;
+}
+
+.jtk-endpoint {
+    z-index: 5;
+}
+
+.jtk-overlay {
+    z-index: 6;
+}
+
+/* Mobile-specific containers toggles (optional usage) */
+.control-container-hide,
+.trace-container-hide,
+.instruction-container-hide {
+    display: none;
+}
+
+@media (max-width: 641px) {
+
+    .control-container-show,
+    .trace-container-show,
+    .instruction-container-show {
+        position: fixed;
+        top: 80px;
+        left: 0;
+        z-index: 1050;
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        outline: 0;
+    }
+
+    #toggle-button-menu {
+        position: fixed;
+        top: 0;
+        left: 0;
+        display: flex;
+        padding: 10px;
+        justify-content: space-between;
+        width: 100%;
+        z-index: 1;
+    }
+
+    .toggle-control-menu,
+    .toggle-stack-trace-menu,
+    .toggle-instruction-menu {
+        padding: 0.6em 1.2em;
+        font-size: 1.05rem;
+        border: none;
+        border-radius: 1em;
+        background-color: #288ec8;
+        color: #fff;
+        cursor: pointer;
+        transform: scale(0.9);
+    }
+}
