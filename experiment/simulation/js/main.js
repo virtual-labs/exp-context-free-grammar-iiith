@@ -1,6 +1,5 @@
-//Your JavaScript goes in here
 /*****
- * File containing main logic for CFG derivation
+ * Main CFG derivation logic
  *
  */
 
@@ -22,9 +21,10 @@ function refreshDisplay() {
         ["style", "margin-bottom: 20px;"]
     ]);
     desc.textContent = cfg.description;
+    desc.style.fontWeight = 'bold';
     descContainer.appendChild(desc);
 
-    // Update input string display
+    // Update input string
     const inputContainer = document.getElementById("input_container");
     clearElem(inputContainer);
     const inputStr = newElement("div", [
@@ -39,23 +39,37 @@ function refreshDisplay() {
 
     // Update derivation tree
     const treeCanvas = document.getElementById("derivation_tree");
-    drawDerivationTree(treeCanvas, derivation.steps[currentStepIndex]);
+    drawDerivationTree(treeCanvas, derivation.steps[currentStepIndex].result);
 
-    // Update derivation steps list
+    // Update derivation steps
     const stepsList = document.getElementById("derivation_steps_list");
     clearElem(stepsList);
 
-    derivation.steps.forEach((step, index) => {
-        const stepItem = newElement("li", [
-            ["class", index === currentStepIndex ? "current-step" : ""]
-        ]);
-        stepItem.textContent = step;
-        stepsList.appendChild(stepItem);
-    });
+    if (derivation.steps && derivation.steps.length > 0) {
+        const fragment = document.createDocumentFragment();
 
-    // Scroll to current step
-    if (stepsList.children[currentStepIndex]) {
-        stepsList.children[currentStepIndex].scrollIntoView({ behavior: 'smooth', block: 'center' });
+        for (let i = currentStepIndex; i >= 0; i--) {
+            const step = derivation.steps[i];
+            const stepItem = newElement("li", [
+                ["class", i === currentStepIndex ? "current-step" : ""]
+            ]);
+
+            const stepNumber = newElement("span", [["class", "step-number"]]);
+            stepNumber.textContent = `Step ${i + 1}: `;
+
+            const stepResult = newElement("span", [["class", "step-result"]]);
+            stepResult.textContent = step.result;
+
+            const stepRule = newElement("div", [["class", "step-rule"]]);
+            stepRule.textContent = `Using: ${step.rule}`;
+
+            stepItem.appendChild(stepNumber);
+            stepItem.appendChild(stepResult);
+            stepItem.appendChild(stepRule);
+            fragment.appendChild(stepItem);
+        }
+
+        stepsList.appendChild(fragment);
     }
 }
 
@@ -68,21 +82,21 @@ function resetDerivation() {
 window.addEventListener("load", function () {
     refreshDisplay();
 
-    // Event listener for changing grammar
+    // Fixed Change Grammar button
     document.getElementById("change_grammar").addEventListener("click", function () {
         currentCfgIndex = (currentCfgIndex + 1) % cfgs.length;
-        currentInputIndex = 0;
+        currentInputIndex = 0;  // Reset input index when changing grammar
         resetDerivation();
     });
 
-    // Event listener for changing input
+    // Fixed Change Input button
     document.getElementById("change_input").addEventListener("click", function () {
         const cfg = cfgs[currentCfgIndex];
         currentInputIndex = (currentInputIndex + 1) % cfg.inputs.length;
+        currentDerivationIndex = 0; // Reset to first derivation
         resetDerivation();
     });
 
-    // Event listener for next step
     document.getElementById("next").addEventListener("click", function () {
         const cfg = cfgs[currentCfgIndex];
         const input = cfg.inputs[currentInputIndex];
@@ -91,14 +105,9 @@ window.addEventListener("load", function () {
         if (currentStepIndex < derivation.steps.length - 1) {
             currentStepIndex++;
             refreshDisplay();
-
-            if (currentStepIndex === derivation.steps.length - 1) {
-                swal("Derivation complete!", `The input string "${input.string}" can be derived from the grammar.`, "success");
-            }
         }
     });
 
-    // Event listener for previous step
     document.getElementById("prev").addEventListener("click", function () {
         if (currentStepIndex > 0) {
             currentStepIndex--;

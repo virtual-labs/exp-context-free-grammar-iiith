@@ -1,5 +1,5 @@
 /****
- * File containing helper functions for CFG visualization
+ * Helper functions for CFG visualization
  *
  */
 
@@ -28,64 +28,67 @@ function clearElem(elem) {
 function drawDerivationTree(canvas, derivationStep, width = 600, height = 300) {
     clearElem(canvas);
 
-    // This is a simplified tree drawing function
-    // In a real implementation, you would use a proper tree layout algorithm
+    const symbols = derivationStep.split(/\s+/);
     const centerX = width / 2;
     const startY = 30;
-    const levelHeight = 60;
+    const levelHeight = 80; // Increased for better spacing
+    const baseRadius = 20;
+    const charWidth = 7; // Approximate width per character
+    const padding = 8;
 
-    const symbols = derivationStep.split(/\s+/);
-    const levels = Math.ceil(Math.log2(symbols.length + 1));
-
-    // Draw nodes
-    for (let i = 0; i < symbols.length; i++) {
+    // Calculate node positions and sizes
+    const nodes = symbols.map((symbol, i) => {
         const level = Math.floor(Math.log2(i + 1));
         const posInLevel = i + 1 - Math.pow(2, level);
         const x = centerX + (posInLevel - (Math.pow(2, level) - 1) / 2) * (width / (Math.pow(2, level) + 1));
         const y = startY + level * levelHeight;
+        const radius = Math.max(baseRadius, (symbol.length * charWidth) / 2 + padding);
 
-        // Draw node
-        const circle = newElementNS("circle", [
-            ["cx", x],
-            ["cy", y],
-            ["r", 20],
-            ["fill", "#29e"],
-            ["stroke", "#fff"],
-            ["stroke-width", "2"]
-        ]);
-        canvas.appendChild(circle);
+        return { x, y, radius, symbol };
+    });
 
-        // Draw text
-        const text = newElementNS("text", [
-            ["x", x],
-            ["y", y + 5],
-            ["text-anchor", "middle"],
-            ["fill", "#fff"],
-            ["font-size", "14px"],
-            ["font-family", "sans-serif"]
-        ]);
-        text.textContent = symbols[i];
-        canvas.appendChild(text);
-
-        // Draw connection to parent if not root
+    // Draw connections first (so nodes appear on top)
+    nodes.forEach((node
+        , i) => {
         if (i > 0) {
-            const parentIdx = Math.floor((i - 1) / 2);
-            const parentLevel = Math.floor(Math.log2(parentIdx + 1));
-            const parentPosInLevel = parentIdx + 1 - Math.pow(2, parentLevel);
-            const parentX = centerX + (parentPosInLevel - (Math.pow(2, parentLevel) - 1) / 2) * (width / (Math.pow(2, parentLevel) + 1));
-            const parentY = startY + parentLevel * levelHeight;
-
+            const parent = nodes[Math.floor((i - 1) / 2)];
             const line = newElementNS("line", [
-                ["x1", parentX],
-                ["y1", parentY + 20],
-                ["x2", x],
-                ["y2", y - 20],
+                ["x1", parent.x],
+                ["y1", parent.y + parent.radius],
+                ["x2", node.x],
+                ["y2", node.y - node.radius],
                 ["stroke", "#ccc"],
                 ["stroke-width", "2"]
             ]);
             canvas.appendChild(line);
         }
-    }
+    });
+
+    // Draw nodes
+    nodes.forEach(node => {
+        const circle = newElementNS("circle", [
+            ["cx", node.x],
+            ["cy", node.y],
+            ["r", node.radius],
+            ["fill", "#29e"],
+            ["stroke", "#fff"],
+            ["stroke-width", "2"],
+            ["class", "tree-node"]
+        ]);
+        canvas.appendChild(circle);
+
+        const text = newElementNS("text", [
+            ["x", node.x],
+            ["y", node.y + 5],
+            ["text-anchor", "middle"],
+            ["fill", "#fff"],
+            ["font-size", "14px"],
+            ["font-family", "monospace"],
+            ["class", "tree-node-text"]
+        ]);
+        text.textContent = node.symbol;
+        canvas.appendChild(text);
+    });
 }
 
 function displayProductionRules(container, productions) {

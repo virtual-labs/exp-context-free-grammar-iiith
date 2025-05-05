@@ -1,9 +1,13 @@
 /****
-  * File containing CFG examples and derivations
+  * CFG examples with rule tracking
   *
   */
 
-// CFG for balanced parentheses
+// Helper function to create step objects
+function step(result, rule) {
+    return { result, rule };
+}
+
 const cfg1 = {
     "description": "Grammar for balanced parentheses",
     "startSymbol": "S",
@@ -19,47 +23,46 @@ const cfg1 = {
                 {
                     "description": "Leftmost derivation for ()()",
                     "steps": [
-                        "S",
-                        "SS",
-                        "(S)S",
-                        "()S",
-                        "()(S)",
-                        "()()"
-                    ]
-                },
-                {
-                    "description": "Alternative derivation",
-                    "steps": [
-                        "S",
-                        "(S)",
-                        "(SS)",
-                        "(()S)",
-                        "(()(S))",
-                        "(()())"
-                    ]
-                }
-            ]
-        },
-        {
-            "string": "(())",
-            "derivations": [
-                {
-                    "description": "Leftmost derivation for (())",
-                    "steps": [
-                        "S",
-                        "(S)",
-                        "((S))",
-                        "(())"
+                        step("S", "Start Symbol"),
+                        step("SS", "S → SS"),
+                        step("(S)S", "S → (S)"),
+                        step("()S", "S → ε"),
+                        step("()(S)", "S → (S)"),
+                        step("()()", "S → ε")
                     ]
                 }
             ]
         }
     ]
-}
+};
 
-// CFG for arithmetic expressions
 const cfg2 = {
-    "description": "Grammar for simple arithmetic expressions",
+    "description": "Grammar for string generation",
+    "startSymbol": "S",
+    "productions": [
+        "S → aSb",
+        "S → ab"
+    ],
+    "inputs": [
+        {
+            "string": "aabb",
+            "derivations": [
+                {
+                    "description": "Derivation for 'aabb'",
+                    "steps": [
+                        step("S", "Start Symbol"),
+                        step("aSb", "S → aSb"),
+                        step("aaSbb", "S → aSb"),
+                        step("aabb", "S → ab")
+                    ]
+                }
+            ]
+        }
+    ]
+};
+
+const cfg3 = {
+    "description": "Grammar for arithmetic expressions",
     "startSymbol": "E",
     "productions": [
         "E → E + T",
@@ -76,42 +79,20 @@ const cfg2 = {
                 {
                     "description": "Standard derivation",
                     "steps": [
-                        "E",
-                        "E + T",
-                        "T + T",
-                        "F + T",
-                        "id + T",
-                        "id + T * F",
-                        "id + F * F",
-                        "id + id * F",
-                        "id + id * id"
-                    ]
-                }
-            ]
-        },
-        {
-            "string": "(id+id)*id",
-            "derivations": [
-                {
-                    "description": "Derivation with parentheses",
-                    "steps": [
-                        "E",
-                        "T",
-                        "T * F",
-                        "F * F",
-                        "(E) * F",
-                        "(E + T) * F",
-                        "(T + T) * F",
-                        "(F + T) * F",
-                        "(id + T) * F",
-                        "(id + F) * F",
-                        "(id + id) * F",
-                        "(id + id) * id"
+                        step("E", "Start Symbol"),
+                        step("E + T", "E → E + T"),
+                        step("T + T", "E → T"),
+                        step("F + T", "T → F"),
+                        step("id + T", "F → id"),
+                        step("id + T * F", "T → T * F"),
+                        step("id + F * F", "T → F"),
+                        step("id + id * F", "F → id"),
+                        step("id + id * id", "F → id")
                     ]
                 }
             ]
         }
     ]
-}
+};
 
-const cfgs = [cfg1, cfg2];
+const cfgs = [cfg1, cfg2, cfg3];
