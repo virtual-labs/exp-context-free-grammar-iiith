@@ -71,6 +71,24 @@ function refreshDisplay() {
 
         stepsList.appendChild(fragment);
     }
+
+    // Show completion alert if we're at the final step
+    if (currentStepIndex === derivation.steps.length - 1) {
+        showCompletionAlert(input.string, derivation.steps[currentStepIndex].result);
+    }
+}
+
+function showCompletionAlert(inputString, finalDerivation) {
+    const derivedString = finalDerivation.replace(/[A-Z]/g, '');
+    const isCompleteDerivation = derivedString === inputString;
+
+    swal({
+        text: isCompleteDerivation
+            ? "The Input String was successfully derived from the Grammar."
+            : `The Derivation did not match the Input String.\n\nDerived: "${derivedString}"\nExpected: "${inputString}"`,
+        // icon: isCompleteDerivation ? "success" : "info",
+        // button: "OK"
+    });
 }
 
 function resetDerivation() {
@@ -82,21 +100,22 @@ function resetDerivation() {
 window.addEventListener("load", function () {
     refreshDisplay();
 
-    // Fixed Change Grammar button
+    // Change Grammar button
     document.getElementById("change_grammar").addEventListener("click", function () {
         currentCfgIndex = (currentCfgIndex + 1) % cfgs.length;
-        currentInputIndex = 0;  // Reset input index when changing grammar
+        currentInputIndex = 0;
         resetDerivation();
     });
 
-    // Fixed Change Input button
+    // Change Input button
     document.getElementById("change_input").addEventListener("click", function () {
         const cfg = cfgs[currentCfgIndex];
         currentInputIndex = (currentInputIndex + 1) % cfg.inputs.length;
-        currentDerivationIndex = 0; // Reset to first derivation
+        currentDerivationIndex = 0;
         resetDerivation();
     });
 
+    // Next Step button
     document.getElementById("next").addEventListener("click", function () {
         const cfg = cfgs[currentCfgIndex];
         const input = cfg.inputs[currentInputIndex];
@@ -108,6 +127,7 @@ window.addEventListener("load", function () {
         }
     });
 
+    // Previous Step button
     document.getElementById("prev").addEventListener("click", function () {
         if (currentStepIndex > 0) {
             currentStepIndex--;
