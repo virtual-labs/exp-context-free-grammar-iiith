@@ -1,6 +1,5 @@
-# Derivation from Context-Free Grammar
 
-# Introduction
+### Introduction
 
 Having recently explored Pushdown Automata (PDAs) and Context-Free Grammars (CFGs), we can now connect these two concepts and delve into **derivation trees**. Derivation trees provide a visual representation of how a sentence is derived from the start symbol of a CFG, showcasing the step-by-step expansion of non-terminal symbols (don’t worry if you don’t understand these terms yet, the visualizations should clarify these concepts). 
 
@@ -8,7 +7,7 @@ By understanding how PDAs use stack-based memory to simulate the process of expa
 
 In the following sections, we will formally explore production rules, and visualize the construction of derivation/parse trees.
 
-## Formal Definition for CFG’s
+### Formal Definition for CFG’s
 
 Context-free grammar is used to generate all possible strings in a given formal language. It is defined as a 4-tuple $ (V, \Sigma, R, S) $, where
 
@@ -19,7 +18,7 @@ Context-free grammar is used to generate all possible strings in a given formal 
 
 A set of substitution rules, known as production rules, forms the basis of grammar. Each rule is represented as a line in the grammar and consists of a symbol and a string connected by an arrow. The symbol, known as a variable, is typically denoted by a capital letter, while the string comprises variables and other symbols called terminals. Terminals are similar to the input alphabet and are usually represented by lowercase letters, numbers, or special symbols. Among the variables, one variable is chosen as the start variable.
 
-### Deriving a string from a Grammar
+#### Deriving a string from a Grammar
 
 Grammar is used to describe a language by generating each string of that language in the following way - 
 
@@ -27,7 +26,7 @@ Grammar is used to describe a language by generating each string of that languag
 2. Identify a variable that has been noted down and locate a rule that starts with that particular variable. Substitute the noted variable with the right-hand side of that rule.
 3. Repeat step 2 until there are no remaining variables.
 
-### Parse Trees
+#### Parse Trees
 
 Parse trees or derivation trees are graphical representations for the derivations of the production rules for a given CFG. They are representative of how the derivation can be done to obtain a string from a given set of production rules. They contain the following properties- 
 
@@ -36,7 +35,7 @@ Parse trees or derivation trees are graphical representations for the derivation
 3. The leaf node is always the terminal node.
 4. The interior nodes are always the non-terminal nodes
 
-# Applications
+### Applications
 
 1. Syntactic Parsing: Derivation trees are used in syntactic parsing to analyze the grammatical structure of sentences and determine syntactic relationships between words and phrases.
 2. Language Generation: Derivation trees aid in generating grammatically correct sentences by following the production rules defined in a grammar.
@@ -45,7 +44,7 @@ Parse trees or derivation trees are graphical representations for the derivation
 5. Grammar Optimization: Derivation trees help analyze the structure and efficiency of grammars, guiding the optimization of redundant or inefficient production rules.
 6. Language Modeling: Derivation trees support probabilistic language modeling by assigning probabilities to production rules, enabling the estimation of sentence likelihoods for various natural language processing tasks.
 
-# Some Questions and Answers
+### Some Questions and Answers
 
 **Q:What is the difference between a language and a grammar in automata theory?**
 
@@ -62,18 +61,24 @@ A: The hierarchical relationship in grammars and languages refers to the nested 
 ---
 
 **Q: How do ambiguity and conflicts in production rules affect the construction of derivation trees?**
+
 A: Ambiguity and conflicts in production rules can result in multiple possible derivation trees for a given string. This makes the construction of derivation trees more complex, requiring additional techniques such as precedence or associativity rules to resolve the ambiguity.
 
 ---
 
 **Q: Is the construction of derivation trees a deterministic or random process?**
+
 A: The construction of derivation trees is deterministic, as it follows a specific set of rules and production choices in a CFG. The process is not random, and each derivation tree corresponds to a specific derivation of a string.
 
 ---
 
 **Q: How do parse trees differ from Abstract Syntax Trees?**
 
-**Note:** Abstract Syntax Trees (ASTs) represent the essential structure and meaning of the input, abstracting away unnecessary syntactic details and focusing on the high-level structure and semantic relationships between the program's components.
+A: Abstract Syntax Trees (ASTs) represent the essential structure and meaning of the input, abstracting away unnecessary syntactic details and focusing on the high-level structure and semantic relationships between the program's components.
+
+
+---
+
 
 | Parse Tree | Abstract Syntax Tree (AST) |
 | --- | --- |
