@@ -10,12 +10,12 @@ In the following sections, we will formally explore production rules, and visual
 
 ## Formal Definition for CFG’s
 
-Context-free grammar is used to generate all possible strings in a given formal language. It is defined as a 4-tuple (V, Σ, R, S), where
+Context-free grammar is used to generate all possible strings in a given formal language. It is defined as a 4-tuple $ (V, \Sigma, R, S) $, where
 
-1. V is a finite set called variables
-2. Σ is a finite set which is disjoint from V, called terminals
-3. R is a finite set of rules, with each rule being a variable and a string of variables and terminals
-4. S ∈ V is the start variable
+1. $ V $ is a finite set called variables
+2. $ \Sigma $ is a finite set which is disjoint from V, called terminals
+3. $ R $ is a finite set of rules, with each rule being a variable and a string of variables and terminals
+4. $ S \in V $ is the start variable
 
 A set of substitution rules, known as production rules, forms the basis of grammar. Each rule is represented as a line in the grammar and consists of a symbol and a string connected by an arrow. The symbol, known as a variable, is typically denoted by a capital letter, while the string comprises variables and other symbols called terminals. Terminals are similar to the input alphabet and are usually represented by lowercase letters, numbers, or special symbols. Among the variables, one variable is chosen as the start variable.
 
