@@ -61,11 +61,13 @@ A: The hierarchical relationship in grammars and languages refers to the nested 
 ---
 
 **Q: How do ambiguity and conflicts in production rules affect the construction of derivation trees?**
+
 A: Ambiguity and conflicts in production rules can result in multiple possible derivation trees for a given string. This makes the construction of derivation trees more complex, requiring additional techniques such as precedence or associativity rules to resolve the ambiguity.
 
 ---
 
 **Q: Is the construction of derivation trees a deterministic or random process?**
+
 A: The construction of derivation trees is deterministic, as it follows a specific set of rules and production choices in a CFG. The process is not random, and each derivation tree corresponds to a specific derivation of a string.
 
 ---
@@ -73,6 +75,10 @@ A: The construction of derivation trees is deterministic, as it follows a specif
 **Q: How do parse trees differ from Abstract Syntax Trees?**
 
 A: Abstract Syntax Trees (ASTs) represent the essential structure and meaning of the input, abstracting away unnecessary syntactic details and focusing on the high-level structure and semantic relationships between the program's components.
+
+
+---
+
 
 | Parse Tree | Abstract Syntax Tree (AST) |
 | --- | --- |

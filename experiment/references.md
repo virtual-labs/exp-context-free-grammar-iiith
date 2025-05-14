@@ -1,3 +1,3 @@
-# **References**
+### References
 
-- Introduction To The Theory Of Computation, Micheal Sipser
+- Introduction To The Theory Of Computation, Michael Sipser
