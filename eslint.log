@@ -1,0 +1,35 @@
+
+/home/runner/work/exp-context-free-grammar-iiith/exp-context-free-grammar-iiith/experiment/simulation/js/data.js
+  98:7  warning  'cfgs' is assigned a value but never used  no-unused-vars
+
+/home/runner/work/exp-context-free-grammar-iiith/exp-context-free-grammar-iiith/experiment/simulation/js/helper.js
+   7:5   warning  'elem' is not defined                               no-undef
+   9:9   warning  'elem' is not defined                               no-undef
+  11:12  warning  'elem' is not defined                               no-undef
+  15:5   warning  'elem' is not defined                               no-undef
+  17:9   warning  'elem' is not defined                               no-undef
+  19:12  warning  'elem' is not defined                               no-undef
+  28:10  warning  'drawDerivationTree' is defined but never used      no-unused-vars
+  28:66  warning  'height' is assigned a value but never used         no-unused-vars
+  94:10  warning  'displayProductionRules' is defined but never used  no-unused-vars
+
+/home/runner/work/exp-context-free-grammar-iiith/exp-context-free-grammar-iiith/experiment/simulation/js/main.js
+   12:17  warning  'cfgs' is not defined                    no-undef
+   18:5   warning  'clearElem' is not defined               no-undef
+   19:18  warning  'newElement' is not defined              no-undef
+   29:5   warning  'clearElem' is not defined               no-undef
+   30:22  warning  'newElement' is not defined              no-undef
+   38:5   warning  'displayProductionRules' is not defined  no-undef
+   42:5   warning  'drawDerivationTree' is not defined      no-undef
+   46:5   warning  'clearElem' is not defined               no-undef
+   53:30  warning  'newElement' is not defined              no-undef
+   57:32  warning  'newElement' is not defined              no-undef
+   60:32  warning  'newElement' is not defined              no-undef
+   63:30  warning  'newElement' is not defined              no-undef
+   85:5   warning  'swal' is not defined                    no-undef
+  105:51  warning  'cfgs' is not defined                    no-undef
+  112:21  warning  'cfgs' is not defined                    no-undef
+  120:21  warning  'cfgs' is not defined                    no-undef
+
+✖ 26 problems (0 errors, 26 warnings)
+
