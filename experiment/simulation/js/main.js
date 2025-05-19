@@ -107,14 +107,6 @@ window.addEventListener("load", function () {
         resetDerivation();
     });
 
-    // Change Input button
-    document.getElementById("change_input").addEventListener("click", function () {
-        const cfg = cfgs[currentCfgIndex];
-        currentInputIndex = (currentInputIndex + 1) % cfg.inputs.length;
-        currentDerivationIndex = 0;
-        resetDerivation();
-    });
-
     // Next Step button
     document.getElementById("next").addEventListener("click", function () {
         const cfg = cfgs[currentCfgIndex];
