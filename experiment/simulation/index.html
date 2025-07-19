@@ -1,95 +1,131 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width">
-	<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/css/style.min.css">
-	<link rel="stylesheet" href="./css/main.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Context-Free Grammar Derivation</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/interactive.css">
+  <script src="mobile-detection.js"></script>
 </head>
+<body>
+  <div class="container">
+    <!-- Quick Guide Section -->
+    <div class="guide-container">
+      <div class="guide-header">
+        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+          <circle cx="12" cy="12" r="10"></circle>
+          <path d="M12 8v4M12 16h.01"></path>
+        </svg>
+        <h2>Quick Guide</h2>
+      </div>
+      <div class="guide-steps">
+        <div class="guide-step">
+          <div class="step-number purple">1</div>
+          <div class="step-text">Select a CFG using "Change Grammar"</div>
+        </div>
+        <div class="guide-step">
+          <div class="step-number blue">2</div>
+          <div class="step-text">Click red nodes to select them</div>
+        </div>
+        <div class="guide-step">
+          <div class="step-number green">3</div>
+          <div class="step-text">Choose production rules to expand</div>
+        </div>
+        <div class="guide-step">
+          <div class="step-number red">4</div>
+          <div class="step-text">Build tree until string matches target</div>
+        </div>
+      </div>
+    </div>
 
-<body class="body-padding">
-	<div class="container">
-		<div class="columns is-centered">
-			<div id="instruction-container" class="column">
-				<div
-					class="v-collapsible-instruction-container v-instruction-container instruction-container-background">
-					<div id="instruction-title" class="v-collapsible is-size-5">Instructions</div>
-					<div class="v-content" style="text-align: left; padding-left: 10%; padding-right: 10%;">
-						<ul style="list-style: disc;">
-							<li><strong>Change Grammar</strong> button switches to a different CFG example</li>
-							<li><strong>Change Input</strong> changes the input string to derive</li>
-							<li><strong>Next Step</strong> shows the next derivation step</li>
-							<li><strong>Previous Step</strong> shows the previous derivation step</li>
-							<li>Scroll down the Middle Container to see the Derivation Tree</li>
-						</ul>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
+    <!-- Main Content Panels -->
+    <div class="main-panels">
+      <!-- Main Experiment Area -->
+      <div class="panel experiment-panel">
+        <!-- Controls (now horizontal at the top) -->
+        <div class="controls-container">
+          <div class="controls-title">Controls:</div>
+          <div class="horizontal-controls">
+            <button id="change_grammar" class="button blue">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                <line x1="15" y1="9" x2="15.01" y2="9"></line>
+              </svg>
+              Change Grammar
+            </button>
+            <button id="change_input" class="button purple">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+              </svg>
+              Change Input
+            </button>
+            <button id="prev_step" class="button green">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 12h18m0 0l-6-6m6 6l-6 6"></path>
+              </svg>
+              Show Hint
+            </button>
+            <button id="next_step" class="button red">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="10"></circle>
+                <path d="M12 8v4M12 16h.01"></path>
+              </svg>
+              Reset Tree
+            </button>
+          </div>
+        </div>
 
-	</br></br></br></br>
-<div class="columns is-centered is-flex-direction-row is-flex-wrap-wrap is-align-content-start">
-	<div id="control-container" class="column is-3-desktop is-12-tablet is-12-mobile" style="align-self: center;">
-		<div class="v-datalist-container" style="height:400px;">
-			<div class="v-datalist-title">DFA controls</div>
-			<div class="v-datalist-row" id="toolbar"
-				style="display: flex; flex-direction: column; justify-content: center; align-items: center; height: 100%;">
-				<button id="change_grammar" type="button" name="button" class="v-button">
-						Change Grammar
-					</button>
-					<button id="change_input" type="button" name="button" class="v-button">
-						Change Input
-					</button>
-					<button id="next" type="button" name="button" class="v-button">
-						Next Step
-					</button>
-					<button id="prev" type="button" name="button" class="v-button">
-						Previous Step
-					</button>
-				</div>
-			</div>
-		</div>
+        <!-- Grammar Details Area -->
+        <div id="grammar_description_container" class="grammar-description">
+          <h3>Grammar for balanced parentheses</h3>
+        </div>
+        
+        <div class="input-string-container">
+          <div id="input_container">
+            <div class="input-string">()()</div>
+          </div>
+        </div>
+        
+        <div class="production-rules-section">
+          <h4 class="section-title">Production Rules:</h4>
+          <div id="production_rules_container" class="production-rules">
+            <!-- Production rule buttons will be inserted here -->
+          </div>
+        </div>
+        
+        <div class="parse-tree-container">
+          <h4 class="parse-tree-title">Parse Tree</h4>
+          <p class="parse-tree-instruction">Click red nodes to select, then use production rule buttons above to expand. Target: <span id="target_string">()()</span></p>
+          <svg id="parse_tree_svg" viewBox="0 0 800 400" preserveAspectRatio="xMidYMid meet">
+            <!-- Parse tree will be built here -->
+          </svg>
+        </div>
+      </div>
 
-		<div class="column is-6-desktop is-12-tablet is-12-mobile">
-			<div class="v-datalist-container" style="height:450px;" id="working-board">
-				<div id="working-area">
-					<div id="grammar_description_container"
-						class="is-size-4 is-centered is-flex-direction-row is-align-content-center">
-					</div>
-					<div id="input_container"
-						class="is-size-1 is-centered is-flex-direction-row is-align-content-center">
-					</div>
-					<div id="production_rules_container"
-						class="is-centered is-flex-direction-row is-align-content-center"
-						style="display: flex; justify-content:center; align-items: center;">
-					</div>
-					</br>
-					<div class=""
-						style="display: flex; justify-content: center; align-items: center; width: 100%;">
-						<svg id="derivation_tree" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 600 300" preserveAspectRatio="xMidYMid meet">
-						</svg>
-					</div>
-				</div>
-			</div>
-		</div>
+      <!-- Derivation Steps Panel (Right Side) -->
+      <div class="panel steps-panel">
+        <h3 class="panel-title">Derivation Steps</h3>
+        <div class="trace-container">
+          <ul id="derivation_steps_list">
+            <li class="trace-item">S <span class="rule-applied">[Start Symbol]</span></li>
+            <li class="trace-item active">SS <span class="rule-applied">[S → SS]</span></li>
+            <li class="trace-item">(S)S <span class="rule-applied">[S → (S)]</span></li>
+            <li class="trace-item">()S <span class="rule-applied">[S → ε]</span></li>
+            <li class="trace-item">()(S) <span class="rule-applied">[S → (S)]</span></li>
+            <li class="trace-item">()() <span class="rule-applied">[S → ε]</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
 
-		<div id="trace-container" class="column is-3-desktop is-12-tablet is-12-mobile" style="align-self: center;">
-			<div class="v-datalist-container" style="height:400px;" id="derivation_steps_container">
-				<div class="v-datalist-title">Derivation Steps</div>
-				<ul id="derivation_steps_list" style="height:400px; overflow-y: auto;">
-				</ul>
-			</div>
-		</div>
-	</div>
-
-	<script src="https://cdn.jsdelivr.net/gh/virtual-labs/virtual-style@0.0.8-b/js/script.js"></script>
-	<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
-	<script src="./js/helper.js"></script>
-	<script src="./js/data.js"></script>
-	<script src="./js/main.js"></script>
-
+  <script src="js/script.js"></script>
+  <script src="js/interactive.js"></script>
 </body>
-
 </html>
