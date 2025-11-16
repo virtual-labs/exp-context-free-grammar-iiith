@@ -134,34 +134,75 @@ const cfgs = [
         ],
         "inputs": [
             {
-                "string": "id * id",
+                "string": "id*id",
                 "derivations": [
                     {
                         "description": "Standard derivation for id * id",
                         "steps": [
                             step("E", "Start Symbol"),
                             step("T", "E → T"),
-                            step("T * F", "T → T * F"),
-                            step("F * F", "T → F"),
-                            step("id * F", "F → id"),
-                            step("id * id", "F → id")
+                            step("T*F", "T → T * F"),
+                            step("F*F", "T → F"),
+                            step("id*F", "F → id"),
+                            step("id*id", "F → id")
                         ]
                     }
                 ]
             },
             {
-                "string": "id + id",
+                "string": "id+id",
                 "derivations": [
                     {
                         "description": "Standard derivation for id + id",
                         "steps": [
                             step("E", "Start Symbol"),
-                            step("E + T", "E → E + T"),
-                            step("T + T", "E → T"),
-                            step("F + T", "T → F"),
-                            step("id + T", "F → id"),
-                            step("id + F", "T → F"),
-                            step("id + id", "F → id")
+                            step("E+T", "E → E + T"),
+                            step("T+T", "E → T"),
+                            step("F+T", "T → F"),
+                            step("id+T", "F → id"),
+                            step("id+F", "T → F"),
+                            step("id+id", "F → id")
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "description": "Grammar for palindromes over a,b",
+        "startSymbol": "S",
+        "productions": [
+            "S → aSa",
+            "S → bSb",
+            "S → a",
+            "S → b",
+            "S → ε"
+        ],
+        "inputs": [
+            {
+                "string": "aba",
+                "derivations": [
+                    {
+                        "description": "Leftmost derivation for aba",
+                        "steps": [
+                            step("S", "Start Symbol"),
+                            step("aSa", "S → aSa"),
+                            step("aba", "S → b")
+                        ]
+                    }
+                ]
+            },
+            {
+                "string": "abababa",
+                "derivations": [
+                    {
+                        "description": "Leftmost derivation for abababa",
+                        "steps": [
+                            step("S", "Start Symbol"),
+                            step("aSa", "S → aSa"),
+                            step("abSba", "S → bSb"),
+                            step("abaSaba", "S → aSa"),
+                            step("abababa", "S → b")
                         ]
                     }
                 ]
