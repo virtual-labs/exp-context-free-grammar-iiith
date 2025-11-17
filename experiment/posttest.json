@@ -19,7 +19,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "In a derivation, what determines which production rule to apply to a selected non-terminal?",
+      "question": "In a derivation, what determines which production rule should be applied to a selected nonterminal?",
       "answers": {
         "a": "The rule must be applied in alphabetical order",
         "b": "The choice depends on the target string being derived",
@@ -53,7 +53,7 @@
       "difficulty": "beginner"
     },
     {
-      "question": "For the grammar S → (S) | SS | ε, what is the correct sequence to derive the string '()()'?",
+      "question": "For the grammar S → (S) | SS | ε, what is the correct leftmost derivation sequence to produce the string '()()'?",
       "answers": {
         "a": "S → SS → (S)S → ()S → ()(S) → ()()",
         "b": "S → (S) → ()() → ()()",
@@ -87,7 +87,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "How do you know when a derivation is successfully completed?",
+      "question": "When is a derivation considered successfully completed?",
       "answers": {
         "a": "When all symbols are terminals",
         "b": "When no more rules can be applied",
@@ -104,7 +104,7 @@
       "difficulty": "intermediate"
     },
     {
-      "question": "Consider the grammar E → E + T | T and T → T * F | F and F → (E) | id. To derive 'id + id * id' unambiguously, which parse tree structure is correct?",
+      "question": "Consider the grammar E → E + T | T; T → T * F | F; F → (E) | id. For the string 'id + id * id', which parse tree correctly represents the unambiguous parse (respecting operator precedence)?",
       "answers": {
         "a": "E[E[T[F[id]]] + T[T[F[id]] * F[id]]]",
         "b": "E[E[E[T[F[id]]] + T[F[id]]] * F[id]]",
@@ -138,7 +138,7 @@
       "difficulty": "hard"
     },
     {
-      "question": "Why might an ambiguous grammar like E → E + E | E * E | id be problematic in practical applications?",
+      "question": "Why can an ambiguous grammar such as E → E + E | E * E | id be problematic in practical applications?",
       "answers": {
         "a": "It generates incorrect strings",
         "b": "It cannot generate any valid expressions",
