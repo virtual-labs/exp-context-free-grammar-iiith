@@ -1,0 +1,158 @@
+{
+  "version": 2.0,
+  "questions": [
+    {
+      "question": "What is the primary difference between leftmost and rightmost derivations?",
+      "answers": {
+        "a": "Leftmost uses more production rules",
+        "b": "Leftmost always expands the leftmost non-terminal first",
+        "c": "Rightmost generates different strings",
+        "d": "Rightmost is faster to compute"
+      },
+      "explanations": {
+        "a": "Incorrect. Both derivation types use the same number of production rules for the same string.",
+        "b": "Correct. In leftmost derivation, at each step the leftmost non-terminal symbol in the current sentential form is expanded first, while rightmost derivation expands the rightmost non-terminal first.",
+        "c": "Incorrect. Both leftmost and rightmost derivations generate the same final string; only the order of expansion differs.",
+        "d": "Incorrect. The computational speed is not inherently different between the two approaches."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "In a derivation, what determines which production rule should be applied to a selected nonterminal?",
+      "answers": {
+        "a": "The rule must be applied in alphabetical order",
+        "b": "The choice depends on the target string being derived",
+        "c": "Always apply the first rule listed in the grammar",
+        "d": "Rules are applied randomly"
+      },
+      "explanations": {
+        "a": "Incorrect. Production rules are not applied in alphabetical order.",
+        "b": "Correct. The choice of production rule depends on the specific target string you want to derive and the structure needed to generate that string correctly.",
+        "c": "Incorrect. The first rule listed may not always lead to the desired target string.",
+        "d": "Incorrect. Rule application is strategic, not random, when deriving a specific target string."
+      },
+      "correctAnswer": "b",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "What information does a complete derivation sequence provide?",
+      "answers": {
+        "a": "Only the final string",
+        "b": "Only the production rules used",
+        "c": "The step-by-step transformation from start symbol to target string",
+        "d": "The grammar's complexity measure"
+      },
+      "explanations": {
+        "a": "Incorrect. A complete derivation shows more than just the final result.",
+        "b": "Incorrect. While production rules are part of it, the derivation shows their application sequence.",
+        "c": "Correct. A complete derivation sequence shows each step of the transformation process, including which production rule was applied and the resulting sentential form at each stage.",
+        "d": "Incorrect. Derivation sequences don't measure grammar complexity."
+      },
+      "correctAnswer": "c",
+      "difficulty": "beginner"
+    },
+    {
+      "question": "For the grammar S → (S) | SS | ε, what is the correct leftmost derivation sequence to produce the string '()()'?",
+      "answers": {
+        "a": "S → SS → (S)S → ()S → ()(S) → ()()",
+        "b": "S → (S) → ()() → ()()",
+        "c": "S → SS → ()()",
+        "d": "S → ()() directly"
+      },
+      "explanations": {
+        "a": "Correct. This shows the step-by-step leftmost derivation: S expands to SS, then the first S becomes (S), then that S becomes ε giving (), then the second S becomes (S), and finally that S becomes ε giving the complete string ()().",
+        "b": "Incorrect. The step from (S) to ()() is not a single production rule application and skips intermediate steps.",
+        "c": "Incorrect. This skips the intermediate steps needed to properly derive the string using the grammar rules.",
+        "d": "Incorrect. There is no direct production rule S → ()() in the given grammar."
+      },
+      "correctAnswer": "a",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "When deriving '(())', which production rule should be applied first to the start symbol S?",
+      "answers": {
+        "a": "S → SS",
+        "b": "S → (S)",
+        "c": "S → ε",
+        "d": "None of the above"
+      },
+      "explanations": {
+        "a": "Incorrect. Using S → SS would create two separate S symbols, but '(())' is a single nested structure, not a sequence of two structures.",
+        "b": "Correct. Since '(())' starts and ends with parentheses and has content inside, the first step should be S → (S) to create the outer parentheses structure. The inner S will then be expanded to handle the inner '()'.",
+        "c": "Incorrect. Using S → ε would create an empty string, but we need to generate '(())'.",
+        "d": "Incorrect. Option b is the correct choice."
+      },
+      "correctAnswer": "b",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "When is a derivation considered successfully completed?",
+      "answers": {
+        "a": "When all symbols are terminals",
+        "b": "When no more rules can be applied",
+        "c": "When the derived string matches the target string and contains only terminals",
+        "d": "When the derivation reaches a fixed length"
+      },
+      "explanations": {
+        "a": "Incorrect. Having all terminals doesn't guarantee the string matches the target.",
+        "b": "Incorrect. This describes when derivation is stuck, not necessarily successful.",
+        "c": "Correct. A derivation is successfully completed when the resulting string contains only terminal symbols and matches the intended target string.",
+        "d": "Incorrect. Derivation length varies and doesn't determine success."
+      },
+      "correctAnswer": "c",
+      "difficulty": "intermediate"
+    },
+    {
+      "question": "Consider the grammar E → E + T | T; T → T * F | F; F → (E) | id. For the string 'id + id * id', which parse tree correctly represents the unambiguous parse (respecting operator precedence)?",
+      "answers": {
+        "a": "E[E[T[F[id]]] + T[T[F[id]] * F[id]]]",
+        "b": "E[E[E[T[F[id]]] + T[F[id]]] * F[id]]",
+        "c": "Both structures are valid",
+        "d": "Neither structure is valid"
+      },
+      "explanations": {
+        "a": "Correct. This structure correctly implements operator precedence where multiplication (*) has higher precedence than addition (+). The expression is parsed as 'id + (id * id)' which follows standard mathematical operator precedence rules.",
+        "b": "Incorrect. This structure would parse the expression as '(id + id) * id', which doesn't follow standard operator precedence where multiplication should bind more tightly than addition.",
+        "c": "Incorrect. Only one structure correctly implements operator precedence.",
+        "d": "Incorrect. Structure (a) is valid and follows correct operator precedence."
+      },
+      "correctAnswer": "a",
+      "difficulty": "hard"
+    },
+    {
+      "question": "For the grammar S → aSb | ab, what is the minimum number of derivation steps needed to generate 'aaabbb'?",
+      "answers": {
+        "a": "2 steps",
+        "b": "3 steps",
+        "c": "4 steps",
+        "d": "5 steps"
+      },
+      "explanations": {
+        "a": "Incorrect. Two steps would not be sufficient to generate 'aaabbb' with this grammar.",
+        "b": "Correct. The derivation is: S → aSb → aaSbb → aaabbb. This takes exactly 3 steps: first S → aSb, then S → aSb again, then S → ab.",
+        "c": "Incorrect. Four steps would be more than necessary for this derivation.",
+        "d": "Incorrect. Five steps would be more than necessary for this derivation."
+      },
+      "correctAnswer": "b",
+      "difficulty": "hard"
+    },
+    {
+      "question": "Why can an ambiguous grammar such as E → E + E | E * E | id be problematic in practical applications?",
+      "answers": {
+        "a": "It generates incorrect strings",
+        "b": "It cannot generate any valid expressions",
+        "c": "Multiple parse trees can lead to different semantic interpretations",
+        "d": "It violates formal grammar rules"
+      },
+      "explanations": {
+        "a": "Incorrect. Ambiguous grammars can generate correct strings; the issue is how they're interpreted.",
+        "b": "Incorrect. Ambiguous grammars can generate valid expressions; the problem is the multiple ways to parse them.",
+        "c": "Correct. Ambiguous grammars allow multiple parse trees for the same string, which can lead to different semantic interpretations and unexpected behavior in compilers or interpreters.",
+        "d": "Incorrect. Ambiguous grammars are syntactically valid CFGs; the issue is semantic ambiguity."
+      },
+      "correctAnswer": "c",
+      "difficulty": "hard"
+    }
+  ]
+}

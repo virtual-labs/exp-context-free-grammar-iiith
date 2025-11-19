@@ -1,0 +1,232 @@
+/* Interactive Mode Styles for Parse Tree Builder */
+.interactive-controls {
+  background: rgba(243, 244, 246, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  margin: 12px 0;
+  padding: 12px;
+}
+
+.current-step-info {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 8px;
+  padding: 10px;
+  margin-bottom: 10px;
+  font-size: 0.9rem;
+}
+
+.current-string {
+  font-family: 'Inter', system-ui, sans-serif;
+  font-weight: 600;
+  margin-bottom: 5px;
+  font-size: 1.1rem;
+  color: #1e293b;
+}
+
+.direction-text {
+  color: #3B82F6;
+  font-weight: 500;
+  font-size: 0.85rem;
+  margin-bottom: 4px;
+}
+
+.instruction-text {
+  color: #1e293b;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.rule-selection-container {
+  margin-bottom: 10px;
+}
+
+.rule-buttons-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.rule-button {
+  background: #6366F1;
+  color: #fff;
+  border: none;
+  box-shadow: 0 0.125rem 0.5rem rgba(99, 102, 241, 0.15);
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: 1rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 0.75rem 1.2rem;
+  min-width: 100px;
+  min-height: 2.2rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  letter-spacing: 0.01em;
+}
+
+.rule-button:hover {
+  filter: brightness(0.95);
+  box-shadow: 0 0.25rem 1rem rgba(99, 102, 241, 0.20);
+  transform: scale(1.05);
+}
+
+.rule-button:active {
+  filter: brightness(0.90);
+  transform: scale(0.95);
+}
+
+.rule-button:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+  transform: none;
+  filter: none;
+  box-shadow: none;
+}
+
+.button-row {
+  display: flex;
+  gap: 10px;
+  align-items: center;
+}
+
+.completion-message {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
+  padding: 12px;
+  margin: 10px 0;
+  color: #047857;
+  font-weight: 500;
+  text-align: center;
+}
+
+.error-message {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  color: #dc2626;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+.success-message {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.2);
+  border-radius: 8px;
+  padding: 10px;
+  margin: 8px 0;
+  color: #047857;
+  font-weight: 500;
+  font-size: 0.9rem;
+}
+
+/* Parse Tree Styles */
+.parse-tree-container {
+  background: rgba(243, 244, 246, 0.7);
+  backdrop-filter: blur(6px);
+  border: 1px solid rgba(0, 0, 0, 0.04);
+  border-radius: 12px;
+  padding: 20px;
+  margin: 15px 0;
+  min-height: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.parse-tree-title {
+  font-size: 1.125rem;
+  color: #1e293b;
+  margin-bottom: 15px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#parse_tree_svg {
+  width: 100%;
+  max-width: 800px;
+  height: auto;
+  min-height: 250px;
+}
+
+/* Tree node styles */
+.tree-node {
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.tree-node:hover {
+  filter: drop-shadow(0px 2px 4px rgba(99, 102, 241, 0.3));
+}
+
+.tree-node.expandable {
+  stroke: #EF4444;
+  stroke-width: 2;
+  animation: pulse-red 2s infinite;
+}
+
+.tree-node.expanded {
+  stroke: #10B981;
+  stroke-width: 2;
+}
+
+.tree-node.terminal {
+  stroke: #6B7280;
+  stroke-width: 1.5;
+}
+
+@keyframes pulse-red {
+  0% {
+    filter: drop-shadow(0px 2px 4px rgba(239, 68, 68, 0.2));
+  }
+  50% {
+    filter: drop-shadow(0px 4px 8px rgba(239, 68, 68, 0.4));
+  }
+  100% {
+    filter: drop-shadow(0px 2px 4px rgba(239, 68, 68, 0.2));
+  }
+}
+
+/* Static Parse Tree Instruction */
+.parse-tree-instruction {
+  margin: 0 0 15px 0;
+  padding: 8px 12px;
+  background: rgba(99, 102, 241, 0.1);
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  border-radius: 8px;
+  font-size: 0.9rem;
+  color: #4338ca;
+  text-align: center;
+  font-family: 'Inter', system-ui, sans-serif;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .rule-buttons-container {
+    flex-direction: column;
+  }
+  
+  .rule-button {
+    width: 100%;
+    min-width: auto;
+  }
+  
+  .button-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .button-row .button {
+    margin-bottom: 8px;
+  }
+}
